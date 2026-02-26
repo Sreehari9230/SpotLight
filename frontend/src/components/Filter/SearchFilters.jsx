@@ -259,7 +259,7 @@
 // export default SearchFilters;
 
 import React, { useEffect, useMemo, useState } from "react";
-import { useMovieStore } from "../store/useMovieStore";
+import { useMovieStore } from "../../store/useMovieStore";
 
 const MAX_GENRES = 3;
 

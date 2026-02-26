@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import SearchFilters from "../components/SearchFilters";
+import SearchFilters from "../components/Filter/SearchFilters";
 import MovieList from "../components/MovieList";
 import DiceLoader from "../components/DiceLoader";
 
