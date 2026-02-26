@@ -7,6 +7,7 @@ import { useMovieStore } from "../store/useMovieStore";
 import PickoneButton from "../components/PickoneButton";
 import MovieFromList from "../components/MovieFromList";
 import UpcomingModal from "../components/UpcomingModal";
+import DiceLoader2 from "../components/DiceLoader2";
 
 const HomePage = () => {
   const { isLanGenLoading, isMoviesLoading, movies } = useMovieStore();
@@ -25,7 +26,12 @@ const HomePage = () => {
                     flex flex-col items-center 
                     px-4 py-6 gap-8"
     >
-      {(isLanGenLoading || isMoviesLoading) && (
+      {isLanGenLoading && (
+        // || isLoading
+        <DiceLoader2 />
+      )}
+
+      {isMoviesLoading && (
         // || isLoading
         <DiceLoader />
       )}
