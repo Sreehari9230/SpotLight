@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import SearchFilters from "../components/Filter/SearchFilters";
+import DescriptionSearch from "../components/DescriptionSearch";
 import MovieList from "../components/MovieList";
 import DiceLoader from "../components/DiceLoader";
 
@@ -38,6 +39,8 @@ const HomePage = () => {
 
       {/* Filters */}
       <SearchFilters />
+
+      <DescriptionSearch/>
 
       {/* Pick One Button */}
 

@@ -3,6 +3,9 @@ import { useMovieStore } from "../../store/useMovieStore";
 
 const MAX_GENRES = 3;
 
+
+
+//shouldremove
 const DEFAULT_FILTERS = {
   genres: [],
   yearFrom: 1990,
@@ -21,7 +24,11 @@ const SearchFilters = () => {
     isLanGenLoading,
   } = useMovieStore();
 
+
+  //should remove
   const [filters, setFilters] = useState(DEFAULT_FILTERS);
+
+  
   const [languageSearch, setLanguageSearch] = useState("");
 
   useEffect(() => {
@@ -255,7 +262,7 @@ const SearchFilters = () => {
         {/* ================= SEARCH ================= */}
         <button
           onClick={handleSearch}
-          disabled={isLanGenLoading}
+          // disabled={isLanGenLoading}
           className="w-full border border-neutral-900 px-4 py-2
           text-sm font-semibold tracking-widest uppercase
           hover:bg-neutral-900 hover:text-white
