@@ -73,6 +73,8 @@ export const useMovieStore = create((set) => ({
     // fetching movies according to filters
     fetchMovies: async (filters) => {
         try {
+            console.log(filters);
+            
             set({ isMoviesLoading: true, filters });
 
             console.log("Selected filters: from store", filters);
@@ -123,4 +125,8 @@ export const useMovieStore = create((set) => ({
     },
 
     // clearMovies: () => set({ movies: [] }),
+
+
+
+    
 }));

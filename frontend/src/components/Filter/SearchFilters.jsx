@@ -26,6 +26,7 @@ const SearchFilters = () => {
 
 
   //should remove
+  // const [filters, setFilters] = useState(DEFAULT_FILTERS);
   const [filters, setFilters] = useState(DEFAULT_FILTERS);
 
   

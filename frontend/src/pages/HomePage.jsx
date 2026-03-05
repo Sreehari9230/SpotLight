@@ -20,7 +20,7 @@ const HomePage = () => {
   //     setIsLoading(false);
   //   }, 2000);
   // }, []);
-
+ 
   return (
     <div
       className="relative min-h-screen bg-base-100 text-base-content
@@ -40,7 +40,7 @@ const HomePage = () => {
       {/* Filters */}
       <SearchFilters />
 
-      <DescriptionSearch/>
+      {/* <DescriptionSearch/> */}
 
       {/* Pick One Button */}
 
