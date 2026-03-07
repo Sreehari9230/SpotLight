@@ -40,7 +40,7 @@ const HomePage = () => {
       {/* Filters */}
       <SearchFilters />
 
-      {/* <DescriptionSearch/> */}
+      <DescriptionSearch/>
 
       {/* Pick One Button */}
 

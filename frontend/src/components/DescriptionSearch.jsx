@@ -1,78 +1,117 @@
-import React from 'react'
+import React, { useState } from "react";
 
 const DescriptionSearch = () => {
+  const [description, setDescription] = useState("");
+  const [listening, setListening] = useState(false);
+
+  const suggestions = [
+    "Dark crime thriller",
+    "Feel-good romance",
+    "Sci-fi adventure",
+  ];
+
+  const handleSuggestion = (text) => {
+    setDescription(text);
+  };
+
+  const toggleMic = () => {
+    setListening((prev) => !prev);
+  };
+
+  const handleSearch = () => {
+    console.log("Searching:", description);
+  };
+
   return (
-<div className="w-full max-w-sm border border-neutral-500 bg-base-100">
-  <div className="p-4 space-y-5">
+    <div className="w-full max-w-sm border border-neutral-500 bg-base-100">
+      <div className="p-5 space-y-6">
 
-    {/* Header */}
-    <div>
-      <h2 className="text-sm font-semibold tracking-widest uppercase">
-        Movie Discovery
-      </h2>
-      <p className="text-xs opacity-60 mt-1">
-        Describe the movie you want — type or speak
-      </p>
-    </div>
+        {/* Header */}
+        <div>
+          <h2 className="text-sm font-semibold tracking-widest uppercase">
+            Movie Discovery
+          </h2>
 
-    {/* Text + Mic */}
-    <section className="space-y-3">
-      <div className="relative">
-        <textarea
-          placeholder="A dark psychological thriller set in space..."
-          rows={3}
-          className="w-full border border-neutral-500 px-3 py-2 pr-10
-          text-sm resize-none focus:outline-none
-          focus:border-neutral-900"
-        />
+          <p className="text-xs opacity-60 mt-1">
+            {listening
+              ? "Listening... speak your movie idea"
+              : "Describe the movie you want — type or speak"}
+          </p>
+        </div>
 
-        {/* Mic Button */}
+        {/* Text + Mic */}
+        <section className="space-y-3">
+          <div className="relative">
+
+            <textarea
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              rows={3}
+              placeholder="A dark psychological thriller set in space..."
+              className={`w-full border px-3 py-2 pr-12 text-sm resize-none
+              focus:outline-none transition
+              ${
+                listening
+                  ? "border-red-400 shadow-[0_0_0_1px_rgba(248,113,113,0.4)]"
+                  : "border-neutral-500"
+              }`}
+            />
+
+            {/* Mic */}
+            <button
+              onClick={toggleMic}
+              className={`absolute right-2 bottom-2 w-8 h-8
+              flex items-center justify-center border
+              transition
+              ${
+                listening
+                  ? "border-red-400 bg-red-400 text-white animate-pulse"
+                  : "border-neutral-500 hover:bg-neutral-200"
+              }`}
+            >
+              🎙
+            </button>
+
+          </div>
+
+          <p className="text-xs opacity-50">
+            Be specific about mood, theme, or setting.
+          </p>
+        </section>
+
+        {/* Suggestions */}
+        <section>
+          <p className="text-xs uppercase tracking-widest opacity-70 mb-3">
+            Quick Ideas
+          </p>
+
+          <div className="flex flex-wrap gap-2">
+            {suggestions.map((item, i) => (
+              <button
+                key={i}
+                onClick={() => handleSuggestion(item)}
+                className="border border-neutral-500 px-3 py-1.5 text-[11px]
+                hover:bg-neutral-200 transition"
+              >
+                {item}
+              </button>
+            ))}
+          </div>
+        </section>
+
+        {/* Search */}
         <button
-          className="absolute bottom-2 right-2 w-7 h-7
-          flex items-center justify-center
-          border border-neutral-500
-          hover:bg-neutral-200 text-xs"
+          onClick={handleSearch}
+          className="w-full border border-neutral-900 px-4 py-2
+          text-sm font-semibold tracking-widest uppercase
+          hover:bg-neutral-900 hover:text-white transition"
         >
-          🎙
+          Find Movies
         </button>
+
       </div>
+    </div>
+  );
+};
 
-      <p className="text-xs opacity-50">
-        Be specific about mood, theme, or setting.
-      </p>
-    </section>
-
-    {/* Quick Suggestions */}
-    <section>
-      <p className="text-xs uppercase tracking-widest opacity-70 mb-2">
-        Quick Ideas
-      </p>
-
-      <div className="flex flex-wrap gap-2">
-        <button className="border border-neutral-500 px-2 py-1 text-[11px] hover:bg-neutral-200">
-          Dark crime thriller
-        </button>
-        <button className="border border-neutral-500 px-2 py-1 text-[11px] hover:bg-neutral-200">
-          Feel-good romance
-        </button>
-        <button className="border border-neutral-500 px-2 py-1 text-[11px] hover:bg-neutral-200">
-          Sci-fi adventure
-        </button>
-      </div>
-    </section>
-
-    {/* Search Button */}
-    <button
-      className="w-full border border-neutral-900 px-4 py-2
-      text-sm font-semibold tracking-widest uppercase
-      hover:bg-neutral-900 hover:text-white"
-    >
-      Find Movies
-    </button>
-
-  </div>
-</div>
-  )
-}
-
-export default DescriptionSearch
+export default DescriptionSearch;
