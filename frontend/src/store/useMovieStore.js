@@ -71,23 +71,70 @@ export const useMovieStore = create((set) => ({
     },
 
     // fetching movies according to filters
+    // fetchMovies: async (filters) => {
+    //     try {
+    //         console.log(filters);
+
+    //         set({ isMoviesLoading: true, filters });
+
+    //         console.log("Selected filters: from store", filters);
+
+    //         // const res = await axiosInstance.post("/movies/filter", filters);
+    //         const res = await axiosInstance.post("/api/movies/random", filters);
+
+    //         // ✅ show backend response message
+    //         if (res) {
+    //             console.log(res.data, "data");
+    //         }
+
+    //         set({ movies: res.data });
+    //     } catch (error) {
+    //         console.error("Error fetching movies:", error);
+    //         toast.error("Failed to fetch movies");
+    //     } finally {
+    //         set({ isMoviesLoading: false });
+    //     }
+    // },
     fetchMovies: async (filters) => {
         try {
-            console.log(filters);
-            
-            set({ isMoviesLoading: true, filters });
+            console.log("Input:", filters);
 
-            console.log("Selected filters: from store", filters);
+            set({ isMoviesLoading: true });
 
-            // const res = await axiosInstance.post("/movies/filter", filters);
-            const res = await axiosInstance.post("/api/movies/random", filters);
+            let res;
 
-            // ✅ show backend response message
-            if (res) {
-                console.log(res.data, "data");
+            // If it's a string → description search
+            if (typeof filters === "string") {
+                const query = filters.trim();
+
+                if (!query) {
+                    console.warn("Description empty");
+                    return;
+                }
+
+                console.log("Calling description search API");
+
+                res = await axiosInstance.post("/api/movies/search", {
+                    description: query,
+                });
+
+                set({ filters: { description: query } });
             }
 
-            set({ movies: res.data });
+            // If it's an object → filter search
+            else if (typeof filters === "object") {
+                console.log("Calling filter API");
+
+                set({ filters });
+
+                res = await axiosInstance.post("/api/movies/random", filters);
+            }
+
+            if (res) {
+                console.log(res.data, "data");
+                set({ movies: res.data });
+            }
+
         } catch (error) {
             console.error("Error fetching movies:", error);
             toast.error("Failed to fetch movies");
@@ -128,5 +175,5 @@ export const useMovieStore = create((set) => ({
 
 
 
-    
+
 }));

@@ -12,7 +12,7 @@ const DEFAULT_FILTERS = {
   yearTo: 2025,
   rating: 6,
   language: "any",
-};
+}; 
 
 const SearchFilters = () => {
   const {
