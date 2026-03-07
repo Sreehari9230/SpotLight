@@ -21,7 +21,7 @@ const HomePage = () => {
   //   }, 2000);
   // }, []);
  
-  return (
+  return ( 
     <div
       className="relative min-h-screen bg-base-100 text-base-content
                     flex flex-col items-center 
