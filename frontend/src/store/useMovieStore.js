@@ -38,6 +38,7 @@ export const useMovieStore = create((set) => ({
             }
 
             set({ genres: res.data });
+            console.log('genres',res.data)
 
         } catch (error) {
             console.error("Error fetching Genres:", error);

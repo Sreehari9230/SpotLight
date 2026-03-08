@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { useMovieStore } from "../../store/useMovieStore";
+import { useMovieStore } from "../store/useMovieStore";
 
-import GenreInput from "../Search/FilterInputs/GenreInput";
+import GenreInput from "../components/Search/FilterSearch/FilterInputs/GenreInput";
 
 const MAX_GENRES = 3;
 
@@ -14,7 +14,7 @@ const DEFAULT_FILTERS = {
   language: "any",
 }; 
 
-const SearchFilters = () => {
+const FilterSearch = () => {
   const {
     fetchGenres,
     fetchLanguages,
@@ -224,4 +224,4 @@ const SearchFilters = () => {
   );
 };
 
-export default SearchFilters;
+export default FilterSearch;

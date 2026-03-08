@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
-import SearchFilters from "../components/Filter/SearchFilters";
+import FilterSearch from "../components/FilterSearch";
 import DescriptionSearch from "../components/DescriptionSearch";
 import MovieList from "../components/MovieList";
-import DiceLoader from "../components/DiceLoader";
+import SecondaryLoader from "../components/SecondaryLoader";
 
 import { useMovieStore } from "../store/useMovieStore";
 import PickoneButton from "../components/PickoneButton";
 import MovieFromList from "../components/MovieFromList";
 import UpcomingModal from "../components/UpcomingModal";
-import DiceLoader2 from "../components/DiceLoader2";
+import PrimaryLoader from "../components/PrimaryLoader";
 
 const HomePage = () => {
   const { isLanGenLoading, isMoviesLoading, movies } = useMovieStore();
@@ -29,18 +29,18 @@ const HomePage = () => {
     >
       {isLanGenLoading && (
         // || isLoading
-        <DiceLoader2 />
+        <PrimaryLoader />
       )}
 
       {isMoviesLoading && (
         // || isLoading
-        <DiceLoader />
+        <SecondaryLoader />
       )}
 
       {/* Filters */}
-      <SearchFilters />
+      <FilterSearch />
 
-      <DescriptionSearch/>
+      {/* <DescriptionSearch/> */}
 
       {/* Pick One Button */}
 
