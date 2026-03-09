@@ -64,26 +64,6 @@ const FilterSearch = () => {
 
   const handleSearch = () => fetchMovies(filters);
 
-  const genreLabel =
-    filters.genres.length === 0
-      ? "Any genre"
-      : `${filters.genres.length} selected`;
-
-  const languageLabel =
-    filters.language === "any"
-      ? "Any language"
-      : languages.find((l) => l.iso_639_1 === filters.language)?.english_name ||
-        "Any language";
-
-  const filteredLanguages = useMemo(() => {
-    return languages.filter(
-      (l) =>
-        l.iso_639_1 &&
-        l.english_name &&
-        l.english_name.toLowerCase().includes(languageSearch.toLowerCase()),
-    );
-  }, [languages, languageSearch]);
-
   return (
     <div className="w-full max-w-sm border border-neutral-500 bg-base-100">
       <div className="p-4 space-y-5">
