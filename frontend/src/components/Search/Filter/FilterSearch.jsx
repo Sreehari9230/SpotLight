@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { useMovieStore } from "../store/useMovieStore";
+import { useMovieStore } from "../../../store/useMovieStore";
 
 import GenreInput from "./FilterInputs/GenreInput";
 import YearInput from "./FilterInputs/YearInput";
@@ -9,7 +9,7 @@ import LanguageInput from "./FilterInputs/LanguageInput";
 const MAX_GENRES = 3;
 
 //shouldremove
-const DEFAULT_FILTERS = {
+const DEFAULT_FILTERS = { 
   genres: [],
   yearFrom: 1990,
   yearTo: 2025,

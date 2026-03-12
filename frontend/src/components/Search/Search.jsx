@@ -1,8 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useMovieStore } from "../../store/useMovieStore";
 import SearchToggle from "./SearchToggle";
-// import FilterSearch from "../FilterSearch/FilterSearch";
-
+import FilterSearch from './Filter/FilterSearch'
 
 const Search = () => {
   const { fetchMovies } = useMovieStore();
@@ -27,7 +26,7 @@ const Search = () => {
 
         
 
-        {/* <FilterSearch /> */}
+        <FilterSearch />
 
         {/* ================= SEARCH ================= */}
         <button

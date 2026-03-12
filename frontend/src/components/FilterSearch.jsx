@@ -1,10 +1,10 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useMovieStore } from "../store/useMovieStore";
 
-import GenreInput from "../components/Search/FilterSearch/FilterInputs/GenreInput";
-import YearInput from "./Search/FilterSearch/FilterInputs/YearInput";
-import RatingInput from "./Search/FilterSearch/FilterInputs/RatingInput";
-import LanguageInput from "./Search/FilterSearch/FilterInputs/LanguageInput";
+import GenreInput from "../components/Search/Filter/FilterInputs/GenreInput";
+import YearInput from "./Search/Filter/FilterInputs/YearInput";
+import RatingInput from "./Search/Filter/FilterInputs/RatingInput";
+import LanguageInput from "./Search/Filter/FilterInputs/LanguageInput";
 
 const MAX_GENRES = 3;
 
