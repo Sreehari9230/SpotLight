@@ -9,6 +9,7 @@ import PickoneButton from "../components/PickoneButton";
 import MovieFromList from "../components/MovieFromList";
 import UpcomingModal from "../components/UpcomingModal";
 import PrimaryLoader from "../components/PrimaryLoader";
+import Search from "../components/Search/Search";
 
 const HomePage = () => {
   const { isLanGenLoading, isMoviesLoading, movies } = useMovieStore();
@@ -20,8 +21,8 @@ const HomePage = () => {
   //     setIsLoading(false);
   //   }, 2000);
   // }, []);
- 
-  return ( 
+
+  return (
     <div
       className="relative min-h-screen bg-base-100 text-base-content
                     flex flex-col items-center 
@@ -37,10 +38,12 @@ const HomePage = () => {
         <SecondaryLoader />
       )}
 
+      <Search />
+
       {/* Filters */}
       <FilterSearch />
 
-      {/* <DescriptionSearch/> */}
+      <DescriptionSearch />
 
       {/* Pick One Button */}
 
