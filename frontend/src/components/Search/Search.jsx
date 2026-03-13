@@ -1,11 +1,13 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useMovieStore } from "../../store/useMovieStore";
 import SearchToggle from "./SearchToggle";
-import FilterSearch from './Filter/FilterSearch'
-import DescriptionSearch from './Description/DescriptionSearch'
+import FilterSearch from "./Filter/FilterSearch";
+import DescriptionSearch from "./Description/DescriptionSearch";
+import { useUiStore } from "../../store/useUiStore";
 
 const Search = () => {
   const { fetchMovies } = useMovieStore();
+  const { searchMode } = useUiStore();
 
   const handleSearch = () => fetchMovies(filters);
 
@@ -25,12 +27,10 @@ const Search = () => {
           <SearchToggle />
         </div>
 
-        {}
+        {/* <FilterSearch />
 
-        <FilterSearch />
-
-        <DescriptionSearch/>
-
+        <DescriptionSearch/> */}
+        {searchMode === "filter" ? <FilterSearch /> : <DescriptionSearch />}
         {/* ================= SEARCH ================= */}
         <button
           onClick={handleSearch}

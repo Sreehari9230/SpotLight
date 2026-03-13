@@ -19,12 +19,12 @@ const DEFAULT_FILTERS = {
 
 const FilterSearch = () => {
   const {
-    fetchGenres,
-    fetchLanguages,
+    // fetchGenres,
+    // fetchLanguages,
     fetchMovies,
     genres,
     languages,
-    isLanGenLoading,
+    // isLanGenLoading,
   } = useMovieStore();
 
   //should remove
@@ -33,10 +33,10 @@ const FilterSearch = () => {
 
   const [languageSearch, setLanguageSearch] = useState("");
 
-  useEffect(() => {
-    fetchGenres();
-    fetchLanguages();
-  }, [fetchGenres, fetchLanguages]);
+  // useEffect(() => {
+  //   fetchGenres();
+  //   fetchLanguages();
+  // }, [fetchGenres, fetchLanguages]);
 
   const closeDropdown = () => document.activeElement?.blur();
 
