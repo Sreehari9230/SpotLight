@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import FilterSearch from "../components/FilterSearch";
-import DescriptionSearch from "../components/DescriptionSearch";
 import MovieList from "../components/MovieList";
 import SecondaryLoader from "../components/SecondaryLoader";
 
@@ -21,24 +19,16 @@ const HomePage = () => {
                     px-4 py-6 gap-8"
     >
       {isLanGenLoading && (
-        // || isLoading
         <PrimaryLoader />
       )}
 
       {isMoviesLoading && (
-        // || isLoading
         <SecondaryLoader />
       )}
 
       <Search />
 
-      {/* Filters */}
-      {/* <FilterSearch />
-
-      <DescriptionSearch /> */}
-
       {/* Pick One Button */}
-
       {movies?.movies?.length > 0 && <PickoneButton />}
 
       {/* Movie Result */}

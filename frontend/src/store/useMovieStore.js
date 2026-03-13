@@ -17,12 +17,9 @@ export const useMovieStore = create((set) => ({
     isMovieDetailsLoading: false,
     movieDetails: null,
 
-
     // store/useMovieStore.js
     pickedMovie: null,
     setPickedMovie: (movie) => set({ pickedMovie: movie }),
-
-
 
     fetchGenres: async () => {
         try {
@@ -38,7 +35,7 @@ export const useMovieStore = create((set) => ({
             }
 
             set({ genres: res.data });
-            console.log('genres',res.data)
+            console.log('genres', res.data)
 
         } catch (error) {
             console.error("Error fetching Genres:", error);
@@ -72,30 +69,6 @@ export const useMovieStore = create((set) => ({
     },
 
     // fetching movies according to filters
-    // fetchMovies: async (filters) => {
-    //     try {
-    //         console.log(filters);
-
-    //         set({ isMoviesLoading: true, filters });
-
-    //         console.log("Selected filters: from store", filters);
-
-    //         // const res = await axiosInstance.post("/movies/filter", filters);
-    //         const res = await axiosInstance.post("/api/movies/random", filters);
-
-    //         // ✅ show backend response message
-    //         if (res) {
-    //             console.log(res.data, "data");
-    //         }
-
-    //         set({ movies: res.data });
-    //     } catch (error) {
-    //         console.error("Error fetching movies:", error);
-    //         toast.error("Failed to fetch movies");
-    //     } finally {
-    //         set({ isMoviesLoading: false });
-    //     }
-    // },
     fetchMovies: async (searchQuery) => {
         try {
             console.log("Input:", searchQuery);
@@ -146,8 +119,8 @@ export const useMovieStore = create((set) => ({
     },
 
     // router.get("/:id", getMovieById);
-
     // fetching the data of one single movie according to id
+    // not being used for now
     fetchMovieData: async (id) => {
         try {
             console.log("Movie ID:", id);
@@ -174,8 +147,5 @@ export const useMovieStore = create((set) => ({
     },
 
     // clearMovies: () => set({ movies: [] }),
-
-
-
 
 }));
