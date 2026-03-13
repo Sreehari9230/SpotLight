@@ -11,7 +11,7 @@ export const useMovieStore = create((set) => ({
     // Random Movie States
     isMoviesLoading: false,
     movies: [],
-    filters: null,
+    searchQuery: null,
 
     // Movie Data State
     isMovieDetailsLoading: false,
@@ -96,39 +96,40 @@ export const useMovieStore = create((set) => ({
     //         set({ isMoviesLoading: false });
     //     }
     // },
-    fetchMovies: async (filters) => {
+    fetchMovies: async (searchQuery) => {
         try {
-            console.log("Input:", filters);
+            console.log("Input:", searchQuery);
 
             set({ isMoviesLoading: true });
 
             let res;
 
             // If it's a string → description search
-            if (typeof filters === "string") {
-                const query = filters.trim();
+            if (typeof searchQuery === "string") {
+
+                const query = searchQuery.trim();
 
                 if (!query) {
                     console.warn("Description empty");
                     return;
                 }
 
-                console.log("Calling description search API");
+                console.log("Calling description search API", query);
 
                 res = await axiosInstance.post("/api/movies/search", {
                     description: query,
                 });
 
-                set({ filters: { description: query } });
+                set({ searchQuery: { description: query } });
             }
 
             // If it's an object → filter search
-            else if (typeof filters === "object") {
+            else if (typeof searchQuery === "object") {
                 console.log("Calling filter API");
 
-                set({ filters });
+                set({ searchQuery });
 
-                res = await axiosInstance.post("/api/movies/random", filters);
+                res = await axiosInstance.post("/api/movies/random", searchQuery);
             }
 
             if (res) {

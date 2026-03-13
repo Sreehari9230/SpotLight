@@ -9,7 +9,7 @@ import LanguageInput from "./FilterInputs/LanguageInput";
 const MAX_GENRES = 3;
 
 const FilterSearch = ({ filters, setFilters }) => {
-  const { fetchMovies, genres, languages } = useMovieStore();
+  const { fetchMovies, genres, languages } = useMovieStore(); 
 
   const closeDropdown = () => document.activeElement?.blur();
 

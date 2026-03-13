@@ -17,10 +17,16 @@ const Search = () => {
   const { fetchMovies } = useMovieStore();
   const { searchMode } = useUiStore();
 
-  const [filters, setFilters] = useState(DEFAULT_FILTERS);
+const [filters, setFilters] = useState(DEFAULT_FILTERS);
+const [description, setDescription] = useState("");
 
-  const handleSearch = () => fetchMovies(filters);
-
+const handleSearch = () => {
+  if (searchMode === "filter") {
+    fetchMovies(filters);
+  } else {
+    fetchMovies(description);
+  }
+};
   return (
     <div className="w-full max-w-sm border border-neutral-500 bg-base-100">
       <div className="p-4 space-y-5">
@@ -35,7 +41,7 @@ const Search = () => {
         {searchMode === "filter" ? (
           <FilterSearch filters={filters} setFilters={setFilters} />
         ) : (
-          <DescriptionSearch />
+          <DescriptionSearch description={description} setDescription={setDescription} />
         )}
 
         <button

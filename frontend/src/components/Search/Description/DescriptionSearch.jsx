@@ -1,22 +1,22 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useSpeechRecognition } from "../../../hooks/useSpeechRecognition";
 
-const DescriptionSearch = () => {
-  const [description, setDescription] = useState("");
+const DescriptionSearch = ({ description, setDescription }) => {
+  // const [description, setDescription] = useState("");
   const [error, setError] = useState("");
 
   const { listening, startListening, stopListening, transcript } =
     useSpeechRecognition();
 
-  const suggestions = [
-    "Dark crime thriller",
-    "Feel-good romance",
-    "Sci-fi adventure",
-  ];
+  // const suggestions = [
+  //   "Dark crime thriller",
+  //   "Feel-good romance",
+  //   "Sci-fi adventure",
+  // ];
 
-  const handleSuggestion = (text) => {
-    setDescription(text);
-  };
+  // const handleSuggestion = (text) => {
+  //   setDescription(text);
+  // };
 
   const toggleMic = () => {
     if (listening) {
@@ -83,7 +83,7 @@ const DescriptionSearch = () => {
         </p>
       </section>
 
-      <section>
+      {/* <section>
         <p className="text-xs uppercase tracking-widest opacity-70 mb-3">
           Quick Ideas
         </p>
@@ -100,7 +100,7 @@ const DescriptionSearch = () => {
             </button>
           ))}
         </div>
-      </section>
+      </section> */}
     </>
   );
 };
