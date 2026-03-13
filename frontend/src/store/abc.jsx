@@ -1,12 +1,16 @@
-import React, { useState, useRef, useEffect } from "react";
-import { useSpeechRecognition } from "../../../hooks/useSpeechRecognition";
+
+
+
+
+
+import React, { useState, useRef } from "react";
 
 const DescriptionSearch = () => {
   const [description, setDescription] = useState("");
+  const [listening, setListening] = useState(false);
   const [error, setError] = useState("");
 
-  const { listening, startListening, stopListening, transcript } =
-    useSpeechRecognition();
+  const recognitionRef = useRef(null);
 
   const suggestions = [
     "Dark crime thriller",
@@ -18,6 +22,73 @@ const DescriptionSearch = () => {
     setDescription(text);
   };
 
+  const startListening = () => {
+    const SpeechRecognition =
+      window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    if (!SpeechRecognition) {
+      console.log("Speech recognition not supported");
+      return;
+    }
+
+    const recognition = new SpeechRecognition();
+
+    recognition.continuous = false;
+    recognition.lang = "en-US";
+    recognition.interimResults = true;
+
+    recognition.onstart = () => {
+      console.log("🎙 Mic started listening");
+      setListening(true);
+    };
+
+    recognition.onspeechstart = () => {
+      console.log("🗣 Speech detected");
+    };
+
+    recognition.onresult = (event) => {
+      let interim = "";
+      let final = "";
+
+      for (let i = event.resultIndex; i < event.results.length; i++) {
+        const transcript = event.results[i][0].transcript;
+
+        if (event.results[i].isFinal) {
+          final += transcript;
+        } else {
+          interim += transcript;
+        }
+      }
+
+      console.log("Interim:", interim);
+      console.log("Final:", final);
+
+      // Update textarea
+      setDescription(final || interim);
+    };
+    recognition.onspeechend = () => {
+      console.log("🔇 Speech ended");
+    };
+
+    recognition.onend = () => {
+      console.log("⏹ Recognition stopped");
+      setListening(false);
+    };
+
+    recognition.onerror = (event) => {
+      console.error("❌ Speech recognition error:", event.error);
+    };
+
+    recognition.start();
+
+    recognitionRef.current = recognition;
+  };
+
+  const stopListening = () => {
+    recognitionRef.current?.stop();
+    setListening(false);
+  };
+
   const toggleMic = () => {
     if (listening) {
       stopListening();
@@ -25,13 +96,6 @@ const DescriptionSearch = () => {
       startListening();
     }
   };
-
-  useEffect(() => {
-    if (transcript) {
-      console.log("Updating textarea with:", transcript);
-      setDescription(transcript);
-    }
-  }, [transcript]);
 
   return (
     <>
