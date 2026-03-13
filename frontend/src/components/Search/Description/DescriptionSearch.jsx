@@ -92,8 +92,6 @@ const DescriptionSearch = () => {
     }
   };
 
-  // const handleSearch = () => fetchMovies(filters);
-
   return (
     <>
       <div>
@@ -163,8 +161,6 @@ const DescriptionSearch = () => {
         </div>
       </section>
     </>
-    // </div>
-    // </div>
   );
 };
 

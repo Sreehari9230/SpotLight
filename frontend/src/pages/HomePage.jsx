@@ -13,14 +13,6 @@ import Search from "../components/Search/Search";
 
 const HomePage = () => {
   const { isLanGenLoading, isMoviesLoading, movies } = useMovieStore();
-  // const [isLoading, setIsLoading] = useState(true);
-
-  // Example: simulate API loading  Show an Info Instead of lan and gen loading here
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setIsLoading(false);
-  //   }, 2000);
-  // }, []);
 
   return (
     <div
@@ -41,9 +33,9 @@ const HomePage = () => {
       <Search />
 
       {/* Filters */}
-      <FilterSearch />
+      {/* <FilterSearch />
 
-      <DescriptionSearch />
+      <DescriptionSearch /> */}
 
       {/* Pick One Button */}
 

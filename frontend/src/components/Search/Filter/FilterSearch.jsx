@@ -8,35 +8,8 @@ import LanguageInput from "./FilterInputs/LanguageInput";
 
 const MAX_GENRES = 3;
 
-//shouldremove
-const DEFAULT_FILTERS = { 
-  genres: [],
-  yearFrom: 1990,
-  yearTo: 2025,
-  rating: 6,
-  language: "any",
-};
-
-const FilterSearch = () => {
-  const {
-    // fetchGenres,
-    // fetchLanguages,
-    fetchMovies,
-    genres,
-    languages,
-    // isLanGenLoading,
-  } = useMovieStore();
-
-  //should remove
-  // const [filters, setFilters] = useState(DEFAULT_FILTERS);
-  const [filters, setFilters] = useState(DEFAULT_FILTERS);
-
-  const [languageSearch, setLanguageSearch] = useState("");
-
-  // useEffect(() => {
-  //   fetchGenres();
-  //   fetchLanguages();
-  // }, [fetchGenres, fetchLanguages]);
+const FilterSearch = ({ filters, setFilters }) => {
+  const { fetchMovies, genres, languages } = useMovieStore();
 
   const closeDropdown = () => document.activeElement?.blur();
 
@@ -61,8 +34,6 @@ const FilterSearch = () => {
     const { name, value } = e.target;
     setFilters((prev) => ({ ...prev, [name]: value }));
   };
-
-  const handleSearch = () => fetchMovies(filters);
 
   return (
     <>
