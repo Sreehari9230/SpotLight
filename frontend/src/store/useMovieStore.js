@@ -96,7 +96,7 @@ export const useMovieStore = create((set) => ({
                 set({ searchQuery: { description: query } });
             }
 
-            // If it's an object → filter search
+            // If it's an object → filter search 
             else if (typeof searchQuery === "object") {
                 console.log("Calling filter API");
 

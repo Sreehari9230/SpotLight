@@ -123,6 +123,8 @@ export const getGenres = async (req, res) => {
       genresCache = await fetchGenres();
     }
 
+    console.log(genresCache)
+
     res.status(200).json(genresCache);
   } catch (error) {
     console.error("Error fetching genres:", error.message);
