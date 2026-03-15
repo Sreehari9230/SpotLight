@@ -32,7 +32,7 @@ export const useMovieStore = create((set) => ({
                 toast.success(res.data.message);
                 console.log(res.data, "data");
                 console.log(res.data.message, "message");
-            }
+            } 
 
             set({ genres: res.data });
             console.log('genres', res.data)
