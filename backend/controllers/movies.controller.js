@@ -4,6 +4,8 @@ import {
   fetchGenres,
   fetchLanguages,
 } from "../services/tmdb.service.js";
+import { getFiltersFromAI } from "../services/ai.service.js";
+import { validateDesc } from "../utils/validateDesc.js";
 
 export const getRandomMovies = async (req, res) => {
   try {
@@ -36,45 +38,53 @@ export const getRandomMovies = async (req, res) => {
   }
 };
 
-
-
-
 export const getMoviesDesc = async (req, res) => {
   try {
-    // const movies = await fetchMoviesFromTMDB(req.body);
+    const { description } = req.body;
 
-    // console.log("line 6 in controller", movies); // not executed
+    console.log(description, "description");
 
-    // if (!movies || movies.length === 0) {
-    //   return res
-    //     .status(404)
-    //     .json({ message: "No movies found from controller" });
-    // }
+    // validation
+    const validationError = validateDesc(description);
 
-    // // Shuffle movies
-    // const shuffled = movies.sort(() => 0.5 - Math.random());
+    if (validationError) {
+      return res.status(400).json({
+        message: validationError,
+      });
+    }
 
-    // // Pick only 5 movies
-    // const selectedMovies = shuffled.slice(0, 12);
+    // AI step
+    const filters = await getFiltersFromAI(description);
 
-    // res.status(200).json({
-    //   count: selectedMovies.length,
-    //   movies: selectedMovies,
-    // });
-    console.log(req.body, "description")
+    console.log("AI filters:", filters);
 
+    // fetch movies
+    const movies = await fetchMoviesFromTMDB(filters);
 
-    // fromhere i want  sent the descripion to a 
+    if (!movies || movies.length === 0) {
+      return res.status(404).json({
+        message: "No movies found",
+      });
+    }
+
+    // shuffle
+    const shuffled = movies.sort(() => 0.5 - Math.random());
+
+    const selectedMovies = shuffled.slice(0, 12);
+
+    res.status(200).json({
+      count: selectedMovies.length,
+      movies: selectedMovies,
+    });
+
   } catch (error) {
-    console.error("TMDB Error:", error.message);
-    res
-      .status(500)
-      .json({ message: "Failed to fetch movies from controller" });
+    console.error("Description search error:", error.message);
+
+    res.status(500).json({
+      message: "Failed to fetch movies",
+    });
   }
 };
-
-
-
 
 export const getMovieById = async (req, res) => {
   try {
@@ -108,7 +118,7 @@ let languagesCache = null;
 export const getGenres = async (req, res) => {
   try {
     console.log('genres');
-    
+
     if (!genresCache) {
       genresCache = await fetchGenres();
     }

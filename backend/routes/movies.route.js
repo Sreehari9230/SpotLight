@@ -25,10 +25,4 @@ router.post("/search", getMoviesDesc)
 router.get("/:id", getMovieById);
 
 
-
 export default router;
-
-
-            //  res = await axiosInstance.post("/api/movies/search", {
-            //         description: query,
-            //     });
