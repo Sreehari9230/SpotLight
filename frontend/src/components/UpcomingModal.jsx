@@ -15,13 +15,9 @@ const UpcomingModal = () => {
           {/* Content */}
           <div className="p-6 space-y-3 overflow-y-auto flex-1">
             <ul className="space-y-2 text-sm text-base-content/80">
-            <li>DISCOVER MOVIES WITH DESCRIPTION</li>
-            <li>DISCRIBE MOVIES WITH TEXT/VOICE NOTE</li>
-            <li>MOVIES DISCOVERED FROM DESCRIPTION WITH THE HELP OF OPEN API </li>
-              {/* <li>• Dedicated movie search page</li>
-              <li>• Google signup/login</li>
-              <li>• Personal watchlist</li>
-              <li>• Pick one movie from your watchlist</li> */}
+              <li>• Import watchlist from Letterboxd</li>
+              <li>• Fetch watchlist using Letterboxd username</li>
+              <li>• Pick a random movie from your watchlist</li>
             </ul>
           </div>
 
