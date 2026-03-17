@@ -6,7 +6,7 @@ const SearchToggle = () => {
   const { searchToggle, searchMode } = useUiStore();
 
   const handleSearchToggle = () => {
-    console.log(searchMode, "haha");
+    // console.log(searchMode, "haha");
     searchToggle();
   };
 

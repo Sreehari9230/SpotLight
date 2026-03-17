@@ -28,7 +28,7 @@ const DescriptionSearch = ({ description, setDescription }) => {
 
   useEffect(() => {
     if (transcript) {
-      console.log("Updating textarea with:", transcript);
+      // console.log("Updating textarea with:", transcript);
       setDescription(transcript);
     }
   }, [transcript]);

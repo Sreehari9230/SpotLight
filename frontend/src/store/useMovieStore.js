@@ -30,15 +30,15 @@ export const useMovieStore = create((set) => ({
             // ✅ show backend response message
             if (res?.data?.message) {
                 toast.success(res.data.message);
-                console.log(res.data, "data");
-                console.log(res.data.message, "message");
+                // console.log(res.data, "data");
+                // console.log(res.data.message, "message");
             } 
 
             set({ genres: res.data });
-            console.log('genres', res.data)
+            // console.log('genres', res.data)
 
         } catch (error) {
-            console.error("Error fetching Genres:", error);
+            // console.error("Error fetching Genres:", error);
             toast.error("Failed to fetch Genres");
         } finally {
             set({ isLanGenLoading: false });
@@ -54,14 +54,14 @@ export const useMovieStore = create((set) => ({
             // ✅ show backend response message
             if (res?.data?.message) {
                 toast.success(res.data.message);
-                console.log(res.data, "data");
-                console.log(res.data.message, "message");
+                // console.log(res.data, "data");
+                // console.log(res.data.message, "message");
             }
 
             set({ languages: res.data });
 
         } catch (error) {
-            console.error("Error fetching Languages:", error);
+            // console.error("Error fetching Languages:", error);
             toast.error("Failed to fetch Languages");
         } finally {
             set({ isLanGenLoading: false });
@@ -71,7 +71,7 @@ export const useMovieStore = create((set) => ({
     // fetching movies according to filters
     fetchMovies: async (searchQuery) => {
         try {
-            console.log("Input:", searchQuery);
+            // console.log("Input:", searchQuery);
 
             set({ isMoviesLoading: true });
 
@@ -87,7 +87,7 @@ export const useMovieStore = create((set) => ({
                     return;
                 }
 
-                console.log("Calling description search API", query);
+                // console.log("Calling description search API", query);
 
                 res = await axiosInstance.post("/api/movies/search", {
                     description: query,
@@ -98,7 +98,7 @@ export const useMovieStore = create((set) => ({
 
             // If it's an object → filter search 
             else if (typeof searchQuery === "object") {
-                console.log("Calling filter API");
+                // console.log("Calling filter API");
 
                 set({ searchQuery });
 
@@ -106,12 +106,12 @@ export const useMovieStore = create((set) => ({
             }
 
             if (res) {
-                console.log(res.data, "data");
+                // console.log(res.data, "data");
                 set({ movies: res.data });
             }
 
         } catch (error) {
-            console.error("Error fetching movies:", error);
+            // console.error("Error fetching movies:", error);
             toast.error("Failed to fetch movies");
         } finally {
             set({ isMoviesLoading: false });
@@ -123,7 +123,7 @@ export const useMovieStore = create((set) => ({
     // not being used for now
     fetchMovieData: async (id) => {
         try {
-            console.log("Movie ID:", id);
+            // console.log("Movie ID:", id);
 
             set({ isMovieDetailsLoading: true });
 
@@ -133,13 +133,13 @@ export const useMovieStore = create((set) => ({
             // ✅ show backend response message
             if (res?.data?.message) {
                 toast.success(res.data.message);
-                console.log(res.data, "data");
-                console.log(res.data.message, "message");
+                // console.log(res.data, "data");
+                // console.log(res.data.message, "message");
             }
 
             set({ movieDetails: res.data });
         } catch (error) {
-            console.error("Error fetching movie details:", error);
+            // console.error("Error fetching movie details:", error);
             toast.error("Failed to fetch movie details");
         } finally {
             set({ isMovieDetailsLoading: false });
