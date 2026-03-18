@@ -19,11 +19,18 @@ const Search = () => {
 
   const [filters, setFilters] = useState(DEFAULT_FILTERS);
   const [description, setDescription] = useState("");
+  const [error, setError] = useState("");
 
   const handleSearch = () => {
     if (searchMode === "filter") {
       fetchMovies(filters);
     } else {
+      if (!description.trim()) {
+        setError("Please describe the movie you’re looking for");
+        return;
+      }
+
+      setError("");
       fetchMovies(description);
     }
   };
@@ -43,6 +50,8 @@ const Search = () => {
           <DescriptionSearch
             description={description}
             setDescription={setDescription}
+            error={error}
+            setError={setError}
           />
         )}
 

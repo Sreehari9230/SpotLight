@@ -1,9 +1,14 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useSpeechRecognition } from "../../../hooks/useSpeechRecognition";
 
-const DescriptionSearch = ({ description, setDescription }) => {
+const DescriptionSearch = ({
+  description,
+  setDescription,
+  setError,
+  error,
+}) => {
   // const [description, setDescription] = useState("");
-  const [error, setError] = useState("");
+  // const [error, setError] = useState("");
 
   const { listening, startListening, stopListening, transcript } =
     useSpeechRecognition();
