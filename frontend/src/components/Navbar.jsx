@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Clapperboard, Sparkles } from "lucide-react";
+import { Clapperboard, Sparkles,ListOrdered } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 
 const Navbar = () => {
@@ -38,7 +38,7 @@ const Navbar = () => {
           onClick={() => document.getElementById("future_features").showModal()}
           className="btn btn-ghost btn-sm gap-2 opacity-70 hover:opacity-100 transition"
         >
-          <Sparkles size={14} />
+          <ListOrdered size={14} />
           <span className="hidden sm:inline">Upcoming</span>
         </button>
 

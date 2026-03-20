@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useSpeechRecognition } from "../../../hooks/useSpeechRecognition";
+import { Mic } from "lucide-react";
 
 const DescriptionSearch = ({
   description,
@@ -78,7 +79,7 @@ const DescriptionSearch = ({
                   : "border-neutral-500 hover:bg-neutral-200"
               }`}
           >
-            🎙
+            <Mic size={18}/>
           </button>
         </div>
         {error && <p className="text-xs text-red-500">{error}</p>}
