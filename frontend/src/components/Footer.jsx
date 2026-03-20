@@ -1,5 +1,5 @@
 import React from "react";
-import { Github, Linkedin } from "lucide-react";
+import { Github, Linkedin, Mail } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -35,6 +35,17 @@ const Footer = () => {
           </a>
         </div>
 
+        {/* Feedback */}
+        <div className="text-center text-sm sm:text-base">
+          <p className="opacity-80">Got feedback, bugs, or feature ideas?</p>
+          <a
+            href="mailto:sreehari.fullstackdev@gmail.com"
+            className="inline-flex items-center gap-2 mt-2 hover:text-primary transition"
+          >
+            <Mail className="w-4 h-4" />
+            sreehari.fullstackdev@gmail.com
+          </a>
+        </div>
         {/* Divider */}
         {/* <div className="w-full max-w-xs h-px bg-base-300" /> */}
 
