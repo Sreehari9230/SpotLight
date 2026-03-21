@@ -8,6 +8,7 @@ A minimal movie discovery app that helps you randomly pick a movie when you canâ
 - Responsive poster grid  
 - Secure backend proxy (TMDB API key protected)  
 - Clean UI using Tailwind + DaisyUI  
+- Search movies by description (text + voice) using Groq + LLaMA
 
 ## Tech Stack
 - **Frontend:** React, Zustand, Tailwind CSS, DaisyUI  
