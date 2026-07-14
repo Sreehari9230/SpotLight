@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Clapperboard, Sparkles,ListOrdered } from "lucide-react";
+import { Clapperboard, Sparkles, ListOrdered } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [show, setShow] = useState(true);
@@ -40,6 +41,15 @@ const Navbar = () => {
         >
           <ListOrdered size={14} />
           <span className="hidden sm:inline">Upcoming</span>
+        </button>
+
+        <button
+          className="btn btn-ghost btn-sm gap-2 opacity-70 hover:opacity-100 transition"
+        >
+          <Link to={'/letterboxd'}>
+          <ListOrdered size={14} />
+          <span className="hidden sm:inline">leterboxd</span>
+          </Link>
         </button>
 
         {/* Center branding */}

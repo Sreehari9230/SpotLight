@@ -8,6 +8,7 @@ import Navbar from "./components/Navbar";
 import { useThemeStore } from "./store/useThemeStore";
 import Footer from "./components/Footer";
 import { useMovieStore } from "./store/useMovieStore";
+import LetterBoxd from "./pages/LetterBoxd";
 
 const App = () => {
   const { fetchGenres, fetchLanguages } = useMovieStore();
@@ -24,6 +25,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/home" element={<HomePage />} />
+          <Route path="/letterboxd" element={<LetterBoxd />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </div>
