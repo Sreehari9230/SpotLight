@@ -6,6 +6,7 @@ import {
     getLanguages,
     getMoviesDesc,
 } from "../controllers/movies.controller.js";
+import { getWatchlist } from "../controllers/letterboxd.controller.js";
 
 const router = express.Router();
 
@@ -23,6 +24,10 @@ router.post("/search", getMoviesDesc)
 
 // Movie details by ID
 router.get("/:id", getMovieById);
+
+
+//get letterboxdwatchlist
+router.get("/letterboxd", getWatchlist)
 
 
 export default router;

@@ -3,7 +3,7 @@ import {
   fetchMovieById,
   fetchGenres,
   fetchLanguages,
-} from "../services/tmdb.service.js";
+} from "../services/tmdb.service.js"; 
 import { getFiltersFromAI } from "../services/ai.service.js";
 import { validateDesc } from "../utils/validateDesc.js";
 
