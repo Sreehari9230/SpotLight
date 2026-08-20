@@ -1,38 +1,68 @@
-import React from "react";
+import React, { useState } from "react";
+import { Download, User } from "lucide-react";
 
-const UpcomingModal = () => {
+const LetterBoxd = () => {
+  const [username, setUsername] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!username.trim()) return;
+
+    try {
+      const response = await fetch(
+        `http://localhost:5000/letterboxd?username=${encodeURIComponent(
+          username.trim()
+        )}`
+      );
+
+      const data = await response.json();
+
+      console.log(data,'bdhbhbhdj');
+    } catch (error) {
+      console.error("Error importing watchlist:", error);
+    }
+  };
+
   return (
-    <dialog id="future_features" className="modal">
-      <div className="modal-box p-0 overflow-hidden relative max-w-md rounded-none border border-neutral-600 max-h-[80vh]">
-        <div className="flex flex-col max-h-[80vh]">
-          {/* Header */}
-          <div className="border-b border-neutral-500 p-4 bg-base-100">
-            <h3 className="text-sm font-semibold uppercase tracking-wide">
-              Upcoming Features
-            </h3>
-          </div>
+    <div className="min-h-screen bg-base-100 pt-24 px-4">
+      <div className="mx-auto max-w-xl">
+        <div className="card bg-base-200 border border-base-300 shadow-xl">
+          <div className="card-body">
+            <h1 className="card-title text-3xl justify-center">
+              Import Letterboxd Watchlist
+            </h1>
 
-          {/* Content */}
-          <div className="p-6 space-y-3 overflow-y-auto flex-1">
-            <ul className="space-y-2 text-sm text-base-content/80">
-              <li>• Import watchlist from Letterboxd</li>
-              <li>• Fetch watchlist using Letterboxd username</li>
-              <li>• Pick a random movie from your watchlist</li>
-            </ul>
-          </div>
+            <p className="text-base-content/70 text-center mb-6">
+              Enter your Letterboxd username and we'll import your watchlist.
+            </p>
 
-          {/* Sticky close */}
-          <div className="sticky bottom-0 bg-base-100 border-t border-neutral-500 p-4">
-            <form method="dialog" className="flex justify-end">
-              <button className="px-4 py-2 text-sm border border-neutral-500 hover:bg-base-200 transition">
-                Close
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <label className="input input-bordered flex items-center gap-3 w-full">
+                <User size={18} className="opacity-60" />
+
+                <input
+                  type="text"
+                  placeholder="Letterboxd username"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  className="grow"
+                />
+              </label>
+
+              <button
+                type="submit"
+                className="btn btn-primary w-full gap-2"
+              >
+                <Download size={18} />
+                Import Watchlist
               </button>
             </form>
           </div>
         </div>
       </div>
-    </dialog>
+    </div>
   );
 };
 
-export default UpcomingModal;
+export default LetterBoxd;
